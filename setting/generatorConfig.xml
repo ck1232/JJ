@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	  <properties resource="mybatis-generator.properties"/>
+	  
+	  <context id="context1">
+	  	
+	  	<plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+	  		<property name="suppressJavaInterface" value="false"/>
+	  	</plugin>
+	  	
+	  	<plugin type="org.mybatis.generator.plugins.ToStringPlugin">
+	  		<property name="useToStringFromRoot" value="true"/>
+	  	</plugin>
+	  	
+	  	<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin">
+	  		<property name="useEqualsHashCodeFromRoot" value="true"/>
+	  	</plugin>
+	  	
+	  	<commentGenerator>
+	  		<property name="suppressAllComments" value="true" />
+		</commentGenerator> 
+	    <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/jj?serverTimezone=Asia/Singapore" driverClass="com.mysql.jdbc.Driver" password="root" userId="root" />
+	    <javaTypeResolver>
+	  		<property name="forceBigDecimals" value="false"/>
+	  	</javaTypeResolver>
+	    <javaModelGenerator targetPackage="com.JJ.model" targetProject="jj-dev\src">
+	    	<property name="trimStrings" value="true"/>
+	    	<property name="enableSubPackages" value="true"/>
+	    	<property name="rootClass" value="com.JJ.model.Base"/>
+	    	<!-- <property name="immutable" value="true"/> -->
+	    </javaModelGenerator>
+	    <sqlMapGenerator targetPackage="com.JJ.sql" targetProject="jj-dev\src">
+	    	<property name="enableSubPackages" value="true"/>
+	    </sqlMapGenerator>
+	    <javaClientGenerator targetPackage="com.JJ.dao" targetProject="jj-dev\src" type="XMLMAPPER" >
+	    	<property name="enableSubPackages" value="true"/>
+	    </javaClientGenerator>
+	    <table schema="jj" tableName="${tableName}" domainObjectName="${domainName}DbObject">
+	    	<generatedKey column="${primaryKeyColumn}" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" type="post"/>
+	      <!-- <columnOverride column="useActualColumnNames" property="true" />  -->
+	    </table>
+	  </context>
+	  
+</generatorConfiguration>
